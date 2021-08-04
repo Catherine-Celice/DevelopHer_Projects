@@ -15,10 +15,10 @@
 // FYI: if we have 4 sets, we can have a variable which s set equal to the chosen set
 
 
-const cardSet1 = ["22224-tiger-icon.png", "22227-horse-icon.png", "22229-zebra-icon.png", "22242-camel-icon.png", "22246-elephant-icon.png", 
-                  "22256-chipmunk-icon.png", "22257-hedgehog-icon.png", "22265-turkey-icon.png", "22272-penguin-icon.png", "22278-owl-icon.png", 
-                  "22282-crocodile-icon.png", "22283-turtle-icon.png", "22290-spouting-whale-icon.png", "22292-dolphin-icon.png", "22297-octopus-icon.png", 
-                  "22299-crab-icon.png", "22304-butterfly-icon.png", "22305-bug-icon.png", "22307-honeybee-icon.png", "22308-lady-beetle-icon.png"];
+const cardSet1 = ["Images/CardSet1/22224-tiger-icon.png", "Images/CardSet1/22227-horse-icon.png", "Images/CardSet1/22229-zebra-icon.png", "Images/CardSet1/22242-camel-icon.png", "Images/CardSet1/22246-elephant-icon.png", 
+                  "Images/CardSet1/22256-chipmunk-icon.png", "Images/CardSet1/22257-hedgehog-icon.png", "Images/CardSet1/22265-turkey-icon.png", "Images/CardSet1/22272-penguin-icon.png", "Images/CardSet1/22278-owl-icon.png", 
+                  "Images/CardSet1/22282-crocodile-icon.png", "Images/CardSet1/22283-turtle-icon.png", "Images/CardSet1/22290-spouting-whale-icon.png", "Images/CardSet1/22292-dolphin-icon.png", "Images/CardSet1/22297-octopus-icon.png", 
+                  "Images/CardSet1/22299-crab-icon.png", "Images/CardSet1/22304-butterfly-icon.png", "Images/CardSet1/22305-bug-icon.png", "Images/CardSet1/22307-honeybee-icon.png", "Images/CardSet1/22308-lady-beetle-icon.png"];
 
 /* cardsSet1 Copyright 2021 Catherine Celice, Salena Galloway, and Heidi Youmans
 
