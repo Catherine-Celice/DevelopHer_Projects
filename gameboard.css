@@ -1,0 +1,22 @@
+
+
+/* Temporary code sole so that I can test that the startGame() function it working when it deals the cards
+    */
+
+
+#board {
+    background-color: bisque;
+}   
+
+
+
+.card {
+    background-color: white;
+    height: 160px;
+    width:80px;
+    border: 3px solid black;
+    
+}
+
+
+
