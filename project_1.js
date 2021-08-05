@@ -112,12 +112,20 @@ function startGame() {
     //return (cardsOrder);
 
     // Create the tableau array with these shuffled cards
-    cardOrder.forEach(addToTableau);
+    cardsOrder.forEach(addToTableau);
+
+    // test code
+        console.log("tableau array:")
+        console.log(tableau);
+    // end of test code
 
     // create and deal the cards
     for(let i = 0; i < numCards; i++) {
 
-        createCard(i, cardOrder[i]);
+        // test code
+            console.log("Creating card " + i);
+        // end of test code
+        createCard(i, cardsOrder[i]);
 
     }
 
@@ -235,48 +243,34 @@ function shuffleDeck(indices) {
 } // end of shuffleDeck()
 
 
-function createQuarter() {
-    const a = document.createElement('div');
-    const b = document.createElement('div');
-
-    a.classList.add('quarter');
-    b.classList.add('twentyfive');
-    coins.appendChild(a);
-    a.appendChild(b);
-    b.innerHTML ='25&' + 'cent' + ';'
-    if(coins.id === 'coins2') {
-        moneyTotal = moneyTotal + 25;
-    }
-    
-}
-
-
 function createCard(i, myObj){
 
-    const card = document.createElement('div');
-    const face = document.createElement('div');
-    const back = document.createElement('div');
-    const blankSpace = document.createElement('div');
+    // This function MAY need to add sizing for the images, but we'll see if that is needed later.
 
-    const faceImage = document.createElement('img');
+    const card = document.createElement('div');
+    //const face = document.createElement('div');
+    const back = document.createElement('div');
+    //const blankSpace = document.createElement('div');
+
+    //const faceImage = document.createElement('img');
     const backImage = document.createElement('img');
 
-    card.classList.add('card');
-    face.classList.add('cardFace');
+    //card.classList.add('card');
+    //face.classList.add('cardFace');
     back.classList.add('cardBank');
-    blankSpace.classList.add('cardEmpty');
+    // blankSpace.classList.add('cardEmpty');
 
 
     board.appendChild(card);
-    card.appendChild(face);
-    face.appendChild(faceImage);
-    faceImage.src = myObj.faceImage;
+    // card.appendChild(face);
+    // face.appendChild(faceImage);
+    // faceImage.src = myObj.faceImage;
 
     card.appendChild(back);
     back.appendChild(backImage);
     backImage.src = myObj.backImage;
     
-    card.appendChild(blankSpace);
+    // card.appendChild(blankSpace);
 
     card.setAttribute("showing", "back");
     const pos = toString(i);
@@ -289,7 +283,7 @@ function createCard(i, myObj){
 function addToTableau(item) {
 
     const faceImage = cardSet[item];
-    cardObject = {faceUp: false, removed: false, cardSetFaceIndex: item, faceImage: faceImage, backImage: backImage};
+    cardObject = {faceUp: false, removed: false, cardSetFaceIndex: item, faceImage: faceImage, backImage: cardBack};
     tableau.push(cardObject);
 
 }
@@ -302,9 +296,11 @@ console.log("Start of testing code at the end of the file");
 // let tempArray = pickGameDeck();
 // console.log(tempArray);
 
-let tempCardsDealt = [];
-tempCardsDealt = startGame();
-console.log("This next array should match the previously pronted one from the startGame function.")
-console.log(tempCardsDealt);
+// let tempCardsDealt = [];
+// tempCardsDealt = startGame();
+// console.log("This next array should match the previously pronted one from the startGame function.")
+// console.log(tempCardsDealt);
 
+
+startGame();
 
