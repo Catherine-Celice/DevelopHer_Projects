@@ -42,10 +42,29 @@ const cardSet1 = ["Images/CardSet1/22224-tiger-icon.png", "Images/CardSet1/22227
 
 
 // Define some key variables
+
+// -- these variables keep track of basic game design
 let cardSet = cardSet1;
 let numImages = cardSet.length;
 let numCards = 12;
 let numPairs = numCards/2;
+
+
+// -- these variables will keep track of the original and current state of the game
+let tableau = [];   // this will hold the original layout of the game
+
+
+
+// Define variables for the event handlers
+/* const start = document.getElementById("start");
+const timer = document.getElementById("timer");
+const reset = document.getElementById("reset"); */
+
+
+// Create event listeners
+/* start.addEventListener("click", startGame);
+reset.addEventListener("click", resetGame); */
+
 
 
 // Challenge: optional function to take choice of card set and assign it to the cardSet variable
@@ -69,6 +88,8 @@ function pickGameDeck() {
     let numPairsChosen = 0;
     let imageIndicesChosen = [];
 
+   
+
     while(numPairsChosen < numPairs) {
 
         
@@ -83,18 +104,125 @@ function pickGameDeck() {
     
     } // end of while loop
 
+    // test code
+        console.log("Inside pickGameDeck() these are the gameDeck -- the chosen cardSet images indices:");
+        console.log(imageIndicesChosen);
+    // end of test code
+
     return(imageIndicesChosen);
+
+     
     
 } // end of pickGameDeck
+
+
+
+// function that runs when the game start button is clicked
+function startGame() {
+
+    const imagesIndices = pickGameDeck();
+
+    // test code
+        console.log("In startGame() after the game deck has been chosen.  These should match the previously printed array from pickGameDeck:")
+        console.log(imagesIndices);
+    // end of test code
+
+    tableau = shuffleDeck(imagesIndices);
+
+        // test code
+        console.log("In startGame() after the deck has been shuffled.  These should match the previous printed array from the shuffleDeck function.")
+        console.log(tableau);
+    // end of test code
+    //dealCards(tableau);
+
+    // I do not know if this line will be needed or not
+    return (tableau);
+
+} // end of StartGame
+
+// function that runs when the game reset button is clicked
+function resetGame() {
+
+} // end of resetGame()
+
+
+
+
+
+// More functions to deal and play the game
+function shuffleDeck(indices) {
+
+        const cardPairsArray = indices.concat(indices);
+        let numCardsDealt = 0;
+        let tableau = [];
+        let shuffledIndices = [];
+        
+        // test code
+            console.log("In shuffleDeck() before the deck has been shuffled:")
+            console.log("this next array should be the gameDeck repeated.")
+            console.log(cardPairsArray);
+        // end of test code
+
+
+        // A check of the code here -- the length of cardPairsArray should equal numCards
+        if(cardPairsArray.length !== numCards) {
+            console.log("Fatal Error - the number of cards to deal is inconsistent.");
+        }
+
+        // This while loop randomly shuffles the indicies of the cards in the cardPairsArray
+        
+        while(numCardsDealt < numCards) {
+
+        
+            // chose a random integer from 0 to numCards - 1
+            let randomIndex = Math.floor(Math.random() * numCards);
+    
+            // check to see if it has already been chosen
+            if(shuffledIndices.indexOf(randomIndex) === -1) {
+                shuffledIndices.push(randomIndex);
+                numCardsDealt = numCardsDealt + 1;
+            }
+        
+        } // end of while loop
+
+
+        // test code
+            console.log("In shuffleDeck() AFTER the indices have been shuffled, but before they are paired to the card indices:")
+            console.log("ie these should be the numbers 0 through 11 (or whatever numCards is) in shuffled order.")
+            console.log(shuffledIndices);
+        // end of test code
+
+        // This is where the randomly shuffled indicies of cardPairsArray are matched to its entries to form the tableau array
+        for(let i = 0; i < numCards; i++) {
+            tableau.push(cardPairsArray[shuffledIndices[i]]);
+        };
+
+
+        // test code
+            console.log("In shuffleDeck() AFTER the deck has been shuffled:")
+            console.log("this next array should be the array of pairs of imageIndices shuffled..")
+            console.log(tableau);
+        // end of test code
+
+        return (tableau);
+
+} // end of shuffleDeck()
+
+
+
 
 
 
 
 // test code ***********************************************************************************
 console.log()
-let tempArray = pickGameDeck();
-console.log(tempArray);
+console.log("Start of testing code at the end of the file");
+// let tempArray = pickGameDeck();
+// console.log(tempArray);
 
-
+let tempCardsDealt = [];
+tempCardsDealt = startGame();
+console.log("This next array should match the previously pronted one from the startGame function.")
+console.log(tempCardsDealt);
 
 
