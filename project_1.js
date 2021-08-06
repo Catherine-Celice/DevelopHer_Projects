@@ -21,6 +21,7 @@ const cardSet1 = ["Images/CardSet1/22224-tiger-icon.png", "Images/CardSet1/22227
                   "Images/CardSet1/22282-crocodile-icon.png", "Images/CardSet1/22283-turtle-icon.png", "Images/CardSet1/22290-spouting-whale-icon.png", "Images/CardSet1/22292-dolphin-icon.png", "Images/CardSet1/22297-octopus-icon.png", 
                   "Images/CardSet1/22299-crab-icon.png", "Images/CardSet1/22304-butterfly-icon.png", "Images/CardSet1/22305-bug-icon.png", "Images/CardSet1/22307-honeybee-icon.png", "Images/CardSet1/22308-lady-beetle-icon.png"];
 
+
 /* cardsSet1 Copyright 2021 Catherine Celice, Salena Galloway, and Heidi Youmans
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -125,7 +126,7 @@ function startGame() {
         // test code
             console.log("Creating card " + i);
         // end of test code
-        createCard(i, cardsOrder[i]);
+        createCard(i, tableau[i]);
 
     }
 
@@ -254,10 +255,10 @@ function createCard(i, myObj){
 
     //const faceImage = document.createElement('img');
     const backImage = document.createElement('img');
-
-    //card.classList.add('card');
+    
+    card.classList.add('card');
     //face.classList.add('cardFace');
-    back.classList.add('cardBank');
+    back.classList.add('cardBack');
     // blankSpace.classList.add('cardEmpty');
 
 
