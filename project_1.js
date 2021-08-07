@@ -134,7 +134,7 @@ function startGame() {
 
     clearBoard();
     const imagesIndices = pickGameDeck();
-    DateObject2 = new Date();
+    let DateObject2 = new Date();
     startingTime  = DateObject2.getSeconds();
     gameRunning = true;
 
@@ -183,8 +183,22 @@ function startGame() {
 // function that runs when the game reset button is clicked
 function resetGame() {
     gameRunning = false;
-        //clearInterval(theTime);
-        gameRunning = false;
+    clearBoard();
+
+    // Recreate and deal the cards using the same cards and order as before.
+    for(let i = 0; i < numCards; i++) {
+
+        // test code
+            console.log("Creating card " + i);
+        // end of test code
+        createCard(i, tableau[i]);
+    }
+     
+
+    let DateObject3 = new Date();
+    startingTime  = DateObject3.getSeconds();
+    gameRunning = true;
+
 } // end of resetGame()
 
 
