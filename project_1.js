@@ -62,16 +62,16 @@ const board = document.getElementById("board");
 
 
 // Define variables for the event handlers
-/* const start = document.getElementById("start");
+const start = document.getElementById("start");
 const timer = document.getElementById("timer");
-const reset = document.getElementById("reset"); */
+const reset = document.getElementById("reset");
 
 
 // Create event listeners
-/* start.addEventListener("click", startGame);
-reset.addEventListener("click", resetGame); */
+start.addEventListener("click", startGame);
+// reset.addEventListener("click", resetGame);
 
-
+//reset.addEventListener("click", clearBoard);  // This was solely to test if the clearBoard function was working.
 
 // Challenge: optional function to take choice of card set and assign it to the cardSet variable
 /* function chooseCardSet(choice){
@@ -94,6 +94,7 @@ reset.addEventListener("click", resetGame); */
 // function that creates the cad layout (tableau) when the game start button is clicked
 function startGame() {
 
+    clearBoard();
     const imagesIndices = pickGameDeck();
 
     // test code
@@ -290,6 +291,13 @@ function addToTableau(item) {
 }
 
 
+function clearBoard() {
+
+    while(board.firstChild) {
+        board.removeChild(board.firstChild);
+    }
+    
+}
 
 // test code ***********************************************************************************
 console.log()
@@ -302,6 +310,10 @@ console.log("Start of testing code at the end of the file");
 // console.log("This next array should match the previously pronted one from the startGame function.")
 // console.log(tempCardsDealt);
 
+// for(let i = 1; i <4; i++){
+//     startGame();
+// }
+// console.log("Clearing the board.");
+// clearBoard();
 
-startGame();
 
