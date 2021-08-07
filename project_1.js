@@ -4,6 +4,47 @@
 // Memory Game
 // August 2021
 
+
+
+// Define variables for the event handlers
+const start = document.getElementById("start");
+const timer = document.getElementById("timer");
+const reset = document.getElementById("reset");
+
+// Create event listeners
+start.addEventListener("click", startGame);
+reset.addEventListener("click", resetGame);
+
+
+// timer code
+let DateObject = new Date();
+let startingTime  = DateObject.getSeconds();
+let theTime = setInterval(theTimer, 1000);
+let gameRunning = false;
+
+// let myVar = setInterval(myTimer, 1000);
+// function myTimer() {
+//   const d = new Date();
+//   document.getElementById("timer").innerHTML = d.toLocaleTimeString();
+// }
+console.log(startingTime);
+function theTimer() {
+
+    console.log("at A");
+    console.log("startingTime:" + startingTime);
+    if(gameRunning) {
+        
+        let currentDateObject = new Date();
+        let currentTime = currentDateObject.getSeconds();
+        console.log(currentTime);
+        let timerTime = currentTime - startingTime;
+        console.log("Timertime = " + timerTime);
+        timer.innerHTML = timerTime;
+    }
+}
+
+
+
 // licence information for images
 
 // create an array to hold the images
@@ -45,6 +86,8 @@ const cardSet1 = ["Images/CardSet1/22224-tiger-icon.png", "Images/CardSet1/22227
 
 // Define some key variables
 
+
+
 // -- these variables keep track of basic game design
 let cardSet = cardSet1;
 let numImages = cardSet.length;
@@ -61,15 +104,10 @@ let tableau = [];       // this array will hold the all the informaion we need a
 const board = document.getElementById("board");
 
 
-// Define variables for the event handlers
-const start = document.getElementById("start");
-const timer = document.getElementById("timer");
-const reset = document.getElementById("reset");
 
 
-// Create event listeners
-start.addEventListener("click", startGame);
-// reset.addEventListener("click", resetGame);
+
+
 
 //reset.addEventListener("click", clearBoard);  // This was solely to test if the clearBoard function was working.
 
@@ -96,6 +134,9 @@ function startGame() {
 
     clearBoard();
     const imagesIndices = pickGameDeck();
+    DateObject2 = new Date();
+    startingTime  = DateObject2.getSeconds();
+    gameRunning = true;
 
     // test code
         console.log("In startGame() after the game deck has been chosen.  These should match the previously printed array from pickGameDeck:")
@@ -141,7 +182,9 @@ function startGame() {
 
 // function that runs when the game reset button is clicked
 function resetGame() {
-
+    gameRunning = false;
+        //clearInterval(theTime);
+        gameRunning = false;
 } // end of resetGame()
 
 
@@ -298,6 +341,28 @@ function clearBoard() {
     }
     
 }
+
+
+
+function runTimer() {
+
+
+}
+
+function startTimer() {
+
+
+
+} // end of startTimer()
+
+
+function stopTimer() {
+
+
+} // end of stopTimer ()
+
+
+
 
 // test code ***********************************************************************************
 console.log()
