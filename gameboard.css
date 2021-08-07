@@ -70,6 +70,7 @@ button {
     border-radius: 3px;
     box-shadow: 0px 5px 5px #5f5f5f, 5px 5px 10px #5f5f5f;
     background-color: lightgray;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .card {
