@@ -30,15 +30,15 @@ let gameRunning = false;
 console.log(startingTime);
 function theTimer() {
 
-    console.log("at A");
-    console.log("startingTime:" + startingTime);
+    // console.log("at A");
+    // console.log("startingTime:" + startingTime);
     if(gameRunning) {
         
         let currentDateObject = new Date();
         let currentTime = currentDateObject.getSeconds();
-        console.log(currentTime);
+        // console.log(currentTime);
         let timerTime = currentTime - startingTime;
-        console.log("Timertime = " + timerTime);
+        // console.log("Timertime = " + timerTime);
         timer.innerHTML = timerTime;
     }
 }
@@ -307,34 +307,16 @@ function createCard(i, myObj){
     // This function MAY need to add sizing for the images, but we'll see if that is needed later.
 
     const card = document.createElement('div');
-    //const face = document.createElement('div');
     const back = document.createElement('div');
-    //const blankSpace = document.createElement('div');
-
-    //const faceImage = document.createElement('img');
-    const backImage = document.createElement('img');
+    const cardImage = document.createElement('img');
     
     card.classList.add('card');
-    //face.classList.add('cardFace');
-    back.classList.add('cardBack');
-    // blankSpace.classList.add('cardEmpty');
-
-
+    // back.classList.add('cardBack');
     board.appendChild(card);
-    // card.appendChild(face);
-    // face.appendChild(faceImage);
-    // faceImage.src = myObj.faceImage;
-
-    card.appendChild(back);
-    back.appendChild(backImage);
-    backImage.src = myObj.backImage;
-    backImage.setAttribute("faceImage", myObj.faceImage);
-
-    // card.appendChild(blankSpace);
-
-    card.setAttribute("showing", "back");
-    const pos = toString(i);
-    card.setAttribute("position", pos);
+    // card.appendChild(back);
+    card.appendChild(cardImage);
+    cardImage.src = myObj.backImage;
+    cardImage.setAttribute("faceImage", myObj.faceImage);
 
 
 } // end of createCard()
@@ -404,24 +386,31 @@ function filpAndMatchCards() {
       let cardBack = currentCard.getAttribute("src");
       let alreadyShowing = document.getElementsByClassName("show");
       if (alreadyShowing.length > 0) {
+        board.style.pointerEvents = 'none';
         for (let i = 0; i < alreadyShowing.length; i++) {
             currentCard.src = currentCard.getAttribute("faceImage");
-          if (alreadyShowing[i].getAttribute("faceImage") != currentCard.getAttribute("faceImage")) {
+            currentCard.parentNode.classList.add("open");
+          if (alreadyShowing[i].firstChild.getAttribute("faceImage") != currentCard.getAttribute("faceImage")) {
             console.log("Not A Match");
             setTimeout(() => {
                 currentCard.src = cardBack;
-                alreadyShowing[i].src = cardBack;
-                alreadyShowing[i].classList.remove("show");
-            }, 2000);
+                alreadyShowing[i].firstChild.src = cardBack;
+                alreadyShowing[i].classList.remove("open","show");
+                currentCard.parentNode.classList.remove("open");
+                board.style.pointerEvents = 'auto';
+            }, 1000);
           } else {
             console.log("Match");
-            alreadyShowing[i].classList.remove("show");
-            currentCard.classList.remove("show");
-            alreadyShowing = [];
+            // console.log(alreadyShowing); //NOTE: Gotta Add before you remove!!!
+            alreadyShowing[i].classList.add("match");
+            alreadyShowing[i].classList.remove("open","show");
+            currentCard.parentNode.classList.add("match");
+            currentCard.parentNode.classList.remove("open");
+            board.style.pointerEvents = 'auto';
           }
         }
       } else {
-        currentCard.classList.add("show");
+        currentCard.parentNode.classList.add("open","show");
         currentCard.src = currentCard.getAttribute("faceImage");
       }
     });
