@@ -30,15 +30,15 @@ let gameRunning = false;
 console.log(startingTime);
 function theTimer() {
 
-    console.log("at A");
-    console.log("startingTime:" + startingTime);
+    // console.log("at A");
+    // console.log("startingTime:" + startingTime);
     if(gameRunning) {
         
         let currentDateObject = new Date();
         let currentTime = currentDateObject.getSeconds();
-        console.log(currentTime);
+        // console.log(currentTime);
         let timerTime = currentTime - startingTime;
-        console.log("Timertime = " + timerTime);
+        // console.log("Timertime = " + timerTime);
         timer.innerHTML = timerTime;
     }
 }
@@ -328,6 +328,8 @@ function createCard(i, myObj){
     card.appendChild(back);
     back.appendChild(backImage);
     backImage.src = myObj.backImage;
+    backImage.setAttribute("faceImage", myObj.faceImage);
+    
     
     // card.appendChild(blankSpace);
 
@@ -379,8 +381,8 @@ function stopTimer() {
 
 
 // test code ***********************************************************************************
-console.log()
-console.log("Start of testing code at the end of the file");
+// console.log()
+// console.log("Start of testing code at the end of the file");
 // let tempArray = pickGameDeck();
 // console.log(tempArray);
 
@@ -395,4 +397,34 @@ console.log("Start of testing code at the end of the file");
 // console.log("Clearing the board.");
 // clearBoard();
 
-
+startGame();
+function filpAndMatchCards() {
+    const board = document.getElementById("board");
+    board.addEventListener("click", (event) => {
+      let currentCard = event.target;
+      let cardBack = currentCard.getAttribute("src");
+      let alreadyShowing = document.getElementsByClassName("show");
+      if (alreadyShowing.length > 0) {
+        for (let i = 0; i < alreadyShowing.length; i++) {
+            currentCard.src = currentCard.getAttribute("faceImage");
+          if (alreadyShowing[i].getAttribute("faceImage") != currentCard.getAttribute("faceImage")) {
+            console.log("Not A Match");
+            setTimeout(() => {
+                currentCard.src = cardBack;
+                alreadyShowing[i].src = cardBack;
+                alreadyShowing[i].classList.remove("show");
+            }, 2000);
+          } else {
+            console.log("Match");
+            alreadyShowing[i].classList.remove("show");
+            currentCard.classList.remove("show");
+            alreadyShowing = [];
+          }
+        }
+      } else {
+        currentCard.classList.add("show");
+        currentCard.src = currentCard.getAttribute("faceImage");
+      }
+    });
+  }
+  filpAndMatchCards();
