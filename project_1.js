@@ -30,15 +30,15 @@ let gameRunning = false;
 console.log(startingTime);
 function theTimer() {
 
-    // console.log("at A");
-    // console.log("startingTime:" + startingTime);
+    console.log("at A");
+    console.log("startingTime:" + startingTime);
     if(gameRunning) {
         
         let currentDateObject = new Date();
         let currentTime = currentDateObject.getSeconds();
-        // console.log(currentTime);
+        console.log(currentTime);
         let timerTime = currentTime - startingTime;
-        // console.log("Timertime = " + timerTime);
+        console.log("Timertime = " + timerTime);
         timer.innerHTML = timerTime;
     }
 }
@@ -329,8 +329,7 @@ function createCard(i, myObj){
     back.appendChild(backImage);
     backImage.src = myObj.backImage;
     backImage.setAttribute("faceImage", myObj.faceImage);
-    
-    
+
     // card.appendChild(blankSpace);
 
     card.setAttribute("showing", "back");
@@ -381,8 +380,8 @@ function stopTimer() {
 
 
 // test code ***********************************************************************************
-// console.log()
-// console.log("Start of testing code at the end of the file");
+console.log()
+console.log("Start of testing code at the end of the file");
 // let tempArray = pickGameDeck();
 // console.log(tempArray);
 
