@@ -16,17 +16,21 @@ start.addEventListener("click", startGame);
 reset.addEventListener("click", resetGame);
 
 
+// Get data from the title page
+inputArray = JSON.parse(sessionStorage.getItem("inputArray"));
+let choice = inputArray[0];
+let num = inputArray[1];
+console.log("Start of gameboard")
+console.log("choice " + choice);
+console.log("num " + num);
+
 // timer code
 let DateObject = new Date();
 let startingTime  = DateObject.getSeconds();
 let theTime = setInterval(theTimer, 1000);
 let gameRunning = false;
 
-// let myVar = setInterval(myTimer, 1000);
-// function myTimer() {
-//   const d = new Date();
-//   document.getElementById("timer").innerHTML = d.toLocaleTimeString();
-// }
+
 console.log(startingTime);
 function theTimer() {
 
@@ -45,7 +49,7 @@ function theTimer() {
 
 
 
-// licence information for images
+
 
 // create an array to hold the images
 
@@ -63,6 +67,7 @@ const cardSet1 = ["Images/CardSet1/22224-tiger-icon.png", "Images/CardSet1/22227
                   "Images/CardSet1/22299-crab-icon.png", "Images/CardSet1/22304-butterfly-icon.png", "Images/CardSet1/22305-bug-icon.png", "Images/CardSet1/22307-honeybee-icon.png", "Images/CardSet1/22308-lady-beetle-icon.png"];
 
 
+ // licence information for images in cardSet1
 /* cardsSet1 Copyright 2021 Catherine Celice, Salena Galloway, and Heidi Youmans
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -77,22 +82,40 @@ const cardSet1 = ["Images/CardSet1/22224-tiger-icon.png", "Images/CardSet1/22227
    See the License for the specific language governing permissions and
    limitations under the License. */
 
-//const cardSet2 = []
-//const cardSet3 = []
+const cardSet2 = ["Images/Dragons/dragon.png",   "Images/Dragons/dragon2.png", "Images/Dragons/dragon3.png", "Images/Dragons/dragon4.png", "Images/Dragons/dragon5.png", 
+                  "Images/Dragons/dragon6.png",   "Images/Dragons/dragon7.png", "Images/Dragons/dragon8.png", "Images/Dragons/dragon9.png", "Images/Dragons/dragon10.png",
+                  "Images/Dragons/dragon11.png",   "Images/Dragons/dragon12.png", "Images/Dragons/dragon13.png", "Images/Dragons/dragon14.png", "Images/Dragons/dragon15.png",
+                  "Images/Dragons/dragon16.png",   "Images/Dragons/dragon17.png", "Images/Dragons/dragon18.png", "Images/Dragons/dragon19.png", "Images/Dragons/dragon20.png", 
+                  "Images/Dragons/dragon21.png", "Images/Dragons/dragon22.png"]
+
+
+                  //const cardSet3 = []
 //const cardSet4 = []
 
 // credits: cardSet1    https://iconarchive.com/show/noto-emoji-animals-nature-icons-by-google.html
 
 
+
 // Define some key variables
 
+//var favoritemovie = sessionStorage.getItem("favoriteMovie");
 
 
 // -- these variables keep track of basic game design
 let cardSet = cardSet1;
-let numImages = cardSet.length;
 let numCards = 12;
+
+console.log("Before " + numCards);
+console.log("first image" + cardSet[0]);
+console.log(choice);
+cardSet = chooseCardSet(choice);
+numCards = getNumCards(num);
+console.log("After " + numCards);
+console.log("first image" + cardSet[0]);
+console.log(choice);
+let numImages = cardSet.length;
 let numPairs = numCards/2;
+
 
 
 // -- these variables will keep track of the original and current state of the game
@@ -112,19 +135,42 @@ const board = document.getElementById("board");
 //reset.addEventListener("click", clearBoard);  // This was solely to test if the clearBoard function was working.
 
 // Challenge: optional function to take choice of card set and assign it to the cardSet variable
-/* function chooseCardSet(choice){
-    cardSet = choice;
-    numImages = cardSet.length;
+function chooseCardSet(choice){
+    
 
-} //end of chooseCardSet */
+    let cardDeck = [];
+    switch (choice) {
+
+
+        case "a":
+            cardDeck = cardSet1;
+            break;
+
+        case "b":
+            cardDeck = cardSet2;
+            break;
+
+        default:
+            cardDeck = cardSet1;
+    }
+
+    console.log("in chooseCardSet");
+    console.log("should be " + cardSet2[0]);
+    console.log("is" + cardDeck[0]);
+    return cardDeck;
+
+} //end of chooseCardSet
 
 
 // Challenge: optional function to take choice of nymber of cards to play with and assign it to the numCards variable
 // FYI: I think that if we have this option to choose the number of cards, we should make them choose by a drop down menu so that we can ensure they pick an even number
-/* function getNumCards(num) {
-    numCards = num;
-    numPairs = numCards/2;
-} */
+function getNumCards(num) {
+    numCards = parseInt(num);
+
+    return numCards;
+}
+
+// We need to rn these functions before any others run in order to get the input info from the title page
 
 
 
@@ -379,26 +425,12 @@ function stopTimer() {
 
 
 
-// test code ***********************************************************************************
-console.log()
-console.log("Start of testing code at the end of the file");
-// let tempArray = pickGameDeck();
-// console.log(tempArray);
 
-// let tempCardsDealt = [];
-// tempCardsDealt = startGame();
-// console.log("This next array should match the previously pronted one from the startGame function.")
-// console.log(tempCardsDealt);
-
-// for(let i = 1; i <4; i++){
-//     startGame();
-// }
-// console.log("Clearing the board.");
-// clearBoard();
-
-startGame();
 function filpAndMatchCards() {
-    const board = document.getElementById("board");
+    // const board = document.getElementById("board");      // the variable board was set much earlier outside of any functions (current line 104), 
+                                                            // so the all the functions lie within its scope.
+                                                            // We can reference it nside any function as needed wthout redefining it.
+
     board.addEventListener("click", (event) => {
       let currentCard = event.target;
       let cardBack = currentCard.getAttribute("src");
@@ -426,4 +458,23 @@ function filpAndMatchCards() {
       }
     });
   }
+
+  // test code ***********************************************************************************
+console.log()
+console.log("Start of testing code at the end of the file");
+// let tempArray = pickGameDeck();
+// console.log(tempArray);
+
+// let tempCardsDealt = [];
+// tempCardsDealt = startGame();
+// console.log("This next array should match the previously pronted one from the startGame function.")
+// console.log(tempCardsDealt);
+
+// for(let i = 1; i <4; i++){
+//     startGame();
+// }
+// console.log("Clearing the board.");
+// clearBoard();
+
+
   filpAndMatchCards();
