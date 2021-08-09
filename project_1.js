@@ -380,10 +380,8 @@ console.log("Start of testing code at the end of the file");
 
 startGame();
 function filpAndMatchCards() {
-    const board = document.getElementById("board");
     board.addEventListener("click", (event) => {
       let currentCard = event.target;
-      let cardBack = currentCard.getAttribute("src");
       let alreadyShowing = document.getElementsByClassName("show");
       if (alreadyShowing.length > 0) {
         board.style.pointerEvents = 'none';
@@ -397,18 +395,23 @@ function filpAndMatchCards() {
                 alreadyShowing[i].firstChild.src = cardBack;
                 alreadyShowing[i].classList.remove("open","show");
                 currentCard.parentNode.classList.remove("open");
-                board.style.pointerEvents = 'auto';
             }, 1000);
           } else {
+            //Cards stay on the board and are disabled via css
             console.log("Match");
-            // console.log(alreadyShowing); //NOTE: Gotta Add before you remove!!!
             alreadyShowing[i].classList.add("match");
             alreadyShowing[i].classList.remove("open","show");
             currentCard.parentNode.classList.add("match");
             currentCard.parentNode.classList.remove("open");
-            board.style.pointerEvents = 'auto';
+            //Requirement clarify -- Remove from the board??
+            // setTimeout(() => { 
+            //     alreadyShowing[i].remove();
+            //     currentCard.parentNode.remove();
+            //     board.style.pointerEvents = 'auto';
+            // }, 1000);
           }
         }
+        board.style.pointerEvents = 'auto';
       } else {
         currentCard.parentNode.classList.add("open","show");
         currentCard.src = currentCard.getAttribute("faceImage");
@@ -416,3 +419,4 @@ function filpAndMatchCards() {
     });
   }
   filpAndMatchCards();
+
