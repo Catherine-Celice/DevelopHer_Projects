@@ -132,12 +132,83 @@ button {
 	opacity: 0.9;
 }
 
+@media only screen and (min-width: 600px) {
+    .nav-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    * {
+        box-sizing: border-box;
+        border: 0px;
+    }
+
+    p {
+        margin: 0.4rem 0.4rem 0.4rem 0.4rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+        height: 10%;
+    }
+
+    #board {
+        display: flex;
+        flex-wrap: wrap; 
+        align-content: center;
+    }
+
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        height: 7.7rem;
+        width: 5.7rem;
+        }
+    
+    .cardBack img {
+        max-width: 100px;
+    }
+    
+    .cardFace img {
+        max-width: 100px;
+    }
+
+    button {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 2px;
+        margin: 0px 2px;
+        width: 100px;
+        height: 40px;
+        font-family: "UnifrakturMaguntia", "verdana";
+        font-size: 2rem;
+        border-radius: 5px;
+    }
+
+    #timer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        margin: 0px 2px;
+        width: 100px;
+        height: 40px;
+        font-family: "UnifrakturMaguntia", "verdana";
+        font-size: 2rem;
+    }
+}
 
 
 
 
-
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1025px) {
     .nav-content {
         display: flex;
         flex-wrap: wrap;
@@ -191,9 +262,6 @@ button {
         margin: 0px 2px;
         width: 100px;
         height: 50px;
-        font-family: "UnifrakturMaguntia", "verdana";
-        font-size: 2rem;
-        border-radius: 5px;
     }
 
     #timer {
@@ -204,9 +272,7 @@ button {
         border-radius: 5px;
         margin: 0px 2px;
         width: 100px;
-        height: 44px;
-        font-family: "UnifrakturMaguntia", "verdana";
-        font-size: 2rem;
+        height: 50px;
     }
 
 
