@@ -26,24 +26,39 @@ console.log("num " + num);
 
 // timer code
 let DateObject = new Date();
-let startingTime  = DateObject.getSeconds();
+let startingDate = DateObject;
+//let startingTime  = DateObject.getSeconds();
 let theTime = setInterval(theTimer, 1000);
 let gameRunning = false;
 
 
-console.log(startingTime);
+
 function theTimer() {
 
     // console.log("at A");
     // console.log("startingTime:" + startingTime);
     if(gameRunning) {
-        
+        timer.HTML = "time";
         let currentDateObject = new Date();
-        let currentTime = currentDateObject.getSeconds();
-        // console.log(currentTime);
-        let timerTime = currentTime - startingTime;
-        // console.log("Timertime = " + timerTime);
-        timer.innerHTML = timerTime;
+
+        let numSeconds = Math.floor((currentDateObject.getTime() - startingDate.getTime())/1000);
+        if (numSeconds < 60) {
+            timer.innerHTML = numSeconds;
+        } else {
+            const numMinutes = Math.floor(numSeconds/60);
+            let tempString = numMinutes + ":";
+            numSeconds = numSeconds % 60;
+            
+            if(numSeconds < 10) {
+                tempString = tempString + "0";
+                tempString = tempString + numSeconds;
+            } else {
+                tempString = tempString + numSeconds;
+            }
+            
+            
+            timer.innerHTML = tempString;
+        }
     }
 }
 
@@ -181,7 +196,7 @@ function startGame() {
     clearBoard();
     const imagesIndices = pickGameDeck();
     let DateObject2 = new Date();
-    startingTime  = DateObject2.getSeconds();
+    startingDate = DateObject2;
     gameRunning = true;
 
     // test code
@@ -201,6 +216,7 @@ function startGame() {
     //return (cardsOrder);
 
     // Create the tableau array with these shuffled cards
+    tableau.length = 0;
     cardsOrder.forEach(addToTableau);
 
     // test code
@@ -242,7 +258,7 @@ function resetGame() {
      
 
     let DateObject3 = new Date();
-    startingTime  = DateObject3.getSeconds();
+    startingDate = DateObject3;
     gameRunning = true;
 
 } // end of resetGame()
