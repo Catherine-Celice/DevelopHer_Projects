@@ -4,7 +4,7 @@ body {
     align-items: center;
     background-color: black;
     width: 100%;
-    height: 100vh;
+    height: 90vh;
 }
 
 h1 {
@@ -78,7 +78,7 @@ button {
 
     .other {
         display: block!important; 
-        width: 40%;
+        width: 50%;
         margin-top: 0rem;
         margin-bottom: 0rem;
     }
@@ -86,8 +86,8 @@ button {
     .wall {
         display: block!important;
         position:absolute;  
-        top: 50%;
-        left: 15%;
+        top: 45%;
+        left: 20%;
         width: 40rem;
         height: 5rem;
         margin-bottom: 0rem;
@@ -107,11 +107,6 @@ button {
         display: block!important;
     }
 
-    fieldset {
-        margin: 0rem;
-        padding: 0rem;
-    }
-
     p {
         margin: 0rem;
         padding: 0.5rem;
@@ -120,19 +115,20 @@ button {
     label {
         margin: 0rem;
         font-family: "UnifrakturMaguntia", "verdana";
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+        color: yellow;
         margin-right: 0.4rem;
     }
 
     select {
         font-family: verdana;
-        font-size: 0.8rem;
-        height: 1.2rem;
+        font-size: 0.9rem;
+        height: 1.3rem;
     }
 
     button {
         position:absolute;  
-        top: 60%;
+        top: 41%;
         left: 15%;
         width: 30rem;
         height: 5rem;
@@ -146,7 +142,7 @@ button {
     
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1025px) {
     .nav-content {
         display: flex;
         flex-wrap: wrap;
@@ -172,7 +168,7 @@ button {
     .wall {
         display: block!important;
         position:absolute;  
-        top: 70%;
+        top: 67%;
         left: 20%;
         width: 60rem;
         height: 5rem;
@@ -218,7 +214,7 @@ button {
 
     button {
         position:absolute;  
-        top: 66%;
+        top: 63%;
         left: 19%;
         width: 30rem;
         height: 5rem;
