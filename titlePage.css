@@ -60,7 +60,7 @@ button {
     height: 2.5rem;
 }
 
-@media only screen and (min-width: 350px) {
+@media only screen and (min-width: 600px) {
     .nav-content {
         display: flex;
         flex-wrap: wrap;
