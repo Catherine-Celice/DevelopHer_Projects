@@ -30,11 +30,13 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    justify-items: center;
     align-items: center;
     height: 60%;
     margin: 0rem 0rem;
     min-width: 26vmax;
-    min-width: 26vm;    
+    min-width: 826vm;   
+    border: 1px solid yellow; 
 }
 
 #controls {
@@ -87,7 +89,7 @@ button {
 	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-.card img {
+.cardBack img {
     max-width: 50px;
 }
 
@@ -154,8 +156,8 @@ button {
     #board {
         display: flex;
         flex-wrap: wrap;
-        align-items:center;
-        min-width: 60vmax;
+        align-items: center;
+        min-width: 80vmax;
     }
 
     .card {
