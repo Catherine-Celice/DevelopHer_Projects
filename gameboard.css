@@ -35,8 +35,7 @@ h1 {
     height: 60%;
     margin: 0rem 0rem;
     min-width: 26vmax;
-    min-width: 826vm;   
-    border: 1px solid yellow; 
+    min-width: 26vm; 
 }
 
 #controls {
@@ -148,6 +147,15 @@ button {
         padding: 0.5rem;
     }
 
+    * {
+        box-sizing: border-box;
+        border: 0px;
+    }
+
+    p {
+        margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+
     h1 {
         font-size: 5rem;
         height: 12%;
@@ -155,17 +163,15 @@ button {
 
     #board {
         display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        min-width: 80vmax;
+        flex-wrap: wrap; 
+        align-content: center;
     }
 
     .card {
         display: flex;
         flex-wrap: wrap;
-        margin: 0.5rem 0.5rem;
-        height: 11.7rem;
-        width: 7.7rem;
+        height: 8.7rem;
+        width: 5.7rem;
         }
     
     .cardBack img {
