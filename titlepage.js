@@ -15,7 +15,8 @@ function goToGame(){
 
     deckSize = document.getElementById("deckSize").value;
     let cardChoice = document.getElementById("cardDesign").value;
-    
+    console.log("goToGame A");
+    console.log(cardChoice);
 
     switch(cardChoice) {
 
@@ -41,7 +42,7 @@ function goToGame(){
     switch(deckSize) {
 
         case "12":
-            inputArray[0] = "12";
+            inputArray[1] = "12";
             break;
     
         case "16":
@@ -64,7 +65,7 @@ function goToGame(){
             inputArray[1] = "12";
             
     }
-    
+    console.log(inputArray[0]);
     // Pass input information to a session storage area from where the gameboard's script will be able to read it
     sessionStorage.setItem("inputArray", JSON.stringify(inputArray));
 
