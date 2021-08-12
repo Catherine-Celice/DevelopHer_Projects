@@ -398,6 +398,10 @@ function clearBoard() {
     while(board.firstChild) {
         board.removeChild(board.firstChild);
     }
+    const congrats = document.getElementById("congrats");
+    if (controls.contains(congrats)) {
+      controls.removeChild(document.getElementById("congrats"));
+    }
     
 }
 
@@ -421,44 +425,46 @@ function stopTimer() {
 } // end of stopTimer ()
 
 
-
-
-
 function filpAndMatchCards() {
+    let matches = 0;
     board.addEventListener("click", (event) => {
       let currentCard = event.target;
       let alreadyShowing = document.getElementsByClassName("show");
       if (alreadyShowing.length > 0) {
-        board.style.pointerEvents = 'none';
+        board.style.pointerEvents = "none";
         for (let i = 0; i < alreadyShowing.length; i++) {
-            currentCard.src = currentCard.getAttribute("faceImage");
-            currentCard.parentNode.classList.add("open");
-          if (alreadyShowing[i].firstChild.getAttribute("faceImage") != currentCard.getAttribute("faceImage")) {
+          currentCard.src = currentCard.getAttribute("faceImage");
+          currentCard.parentNode.classList.add("open");
+          if (
+            alreadyShowing[i].firstChild.getAttribute("faceImage") !=
+            currentCard.getAttribute("faceImage")
+          ) {
             console.log("Not A Match");
             setTimeout(() => {
-                currentCard.src = cardBack;
-                alreadyShowing[i].firstChild.src = cardBack;
-                alreadyShowing[i].classList.remove("open","show");
-                currentCard.parentNode.classList.remove("open");
+              currentCard.src = cardBack;
+              alreadyShowing[i].firstChild.src = cardBack;
+              alreadyShowing[i].classList.remove("open", "show");
+              currentCard.parentNode.classList.remove("open");
+              board.style.pointerEvents = "auto";
             }, 1000);
           } else {
             //Cards stay on the board and are disabled via css
             console.log("Match");
+            matches++;
             alreadyShowing[i].classList.add("match");
-            alreadyShowing[i].classList.remove("open","show");
+            alreadyShowing[i].classList.remove("open", "show");
             currentCard.parentNode.classList.add("match");
             currentCard.parentNode.classList.remove("open");
-            //Requirement clarify -- Remove from the board??
-            // setTimeout(() => { 
-            //     alreadyShowing[i].remove();
-            //     currentCard.parentNode.remove();
-            //     board.style.pointerEvents = 'auto';
-            // }, 1000);
+            board.style.pointerEvents = "auto";
+            console.log(matches);
+            if (numPairs === matches) {
+               matches = 0;
+              endOfGame();
+            }
           }
         }
-        board.style.pointerEvents = 'auto';
       } else {
-        currentCard.parentNode.classList.add("open","show");
+        currentCard.parentNode.classList.add("open", "show");
         currentCard.src = currentCard.getAttribute("faceImage");
       }
     });
@@ -483,4 +489,16 @@ console.log("Start of testing code at the end of the file");
 
 
   filpAndMatchCards();
+
+  function endOfGame() {
+    gameRunning = false;
+    const congrats = document.createElement("div");
+    congrats.id = "congrats";
+    const congratsP = document.createElement("p");
+    congratsP.innerText = `Congratulations!! You have completed the game in ${timer.innerText} seconds`;
+    congratsP.style.color = "white";
+    congrats.appendChild(congratsP);
+    congrats.classList.add('congrats');
+    controls.appendChild(congrats);
+  }
 
