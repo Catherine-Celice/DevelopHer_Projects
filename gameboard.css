@@ -71,7 +71,7 @@ button {
     border-radius: 3px;
     box-shadow: 0px 5px 5px #5f5f5f, 5px 5px 10px #5f5f5f;
     background-color: lightgray;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Orbitron', "verdana";
 }
 
 .card {
@@ -170,11 +170,11 @@ button {
         }
     
     .cardBack img {
-        max-width: 100px;
+        max-width: 79px;
     }
     
-    .cardFace img {
-        max-width: 100px;
+    .card img {
+        max-width: 79px;
     }
 
     button {
@@ -204,9 +204,6 @@ button {
         font-size: 2rem;
     }
 }
-
-
-
 
 @media only screen and (min-width: 1025px) {
     .nav-content {
@@ -245,14 +242,6 @@ button {
         width: 5.7rem;
         }
     
-    .cardBack img {
-        max-width: 100px;
-    }
-    
-    .cardFace img {
-        max-width: 100px;
-    }
-
     button {
         display: flex;
         flex-wrap: wrap;
