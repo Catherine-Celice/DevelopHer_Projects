@@ -41,7 +41,7 @@ function goToGame(){
     switch(deckSize) {
 
         case "12":
-            inputArray[0] = "12";
+            inputArray[1] = "12";
             break;
     
         case "16":
