@@ -87,7 +87,7 @@ button {
     .wall {
         display: block!important;
         position: relative;  
-        top: -12%;
+        top: -6%;
         left: -5%;
         width: 40rem;
         height: 5rem;
@@ -128,9 +128,9 @@ button {
     }
 
     button {
-        position:absolute;  
-        top: 41%;
-        left: 15%;
+        position:relative;  
+        top: -21%;
+        left: -15%;
         width: 30rem;
         height: 5rem;
         background-color: transparent;
