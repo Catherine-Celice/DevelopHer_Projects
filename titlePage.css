@@ -153,10 +153,6 @@ button {
         padding: 1rem;
     }
 
-    body {
-        height: 90vh;
-    }
-
     h1 {
         font-size: 6rem;
         height: 15%;
@@ -190,6 +186,10 @@ button {
         margin-top: 0rem;
     }
 
+    #options {
+        margin-top: -100px;
+    }
+
     #hide {
         display: block!important;
     }
@@ -219,7 +219,7 @@ button {
 
     button {
         position:relative;  
-        top: -33%;
+        top: -19%;
         left: -17%;
         width: 20rem;
         height: 3.5rem;
