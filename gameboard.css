@@ -3,7 +3,6 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: black;
-
  /*   background-color: yellow;  */
     width: 100%;
     height: 90vh;
@@ -30,16 +29,14 @@ h1 {
 #board {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: column;  
     justify-content: center;
-    align-items: center;
+    align-items: center; 
     margin: 2rem;
     padding: 2rem;
     height: 60%;
-    margin: 0rem 0rem;
-    width: 93%
- /*   min-width: 26vmax;
-    min-width: 26vm; */
+    min-width: 20vmax;
+    min-width: 20vm;
 }
 
 #controls {
@@ -96,11 +93,11 @@ button {
 }
 
 .cardBack img {
-    max-width: 50px;
+    max-width: 54px;
 }
 
 .card img {
-    max-width: 50px;
+    max-width: 54px;
 }
 
 .card.open {
@@ -166,18 +163,16 @@ button {
     }
 
     #board {
-        display: flex;
-        flex-wrap: wrap; 
-        justify-content: center;
         align-content: center;
-        height: 60%;
+        min-width: 10vmax;
+        min-width: 10vm;        
     }
 
     .card {
-        display: flex;
-        flex-wrap: wrap;
-        height: 11.5rem;
-        width: 6.7rem;
+/*        display: flex;
+        flex-wrap: wrap;  */
+        height: 8.7rem;
+        width: 5.7rem;
         }
     
     .cardBack img {
@@ -195,11 +190,6 @@ button {
         height: 110px;
         width: 50%;  
     }
-
- /*   #reset {
-        page-break-after: always;
-        break-after: always;
-    }  */
 
     button {
         display: flex;
@@ -249,11 +239,6 @@ button {
         padding: 0.5rem;
     }
 
-    * {
-        box-sizing: border-box;
-        border: 0px;
-    }
-
     p {
         margin: 0.5rem 0.5rem 0.5rem 0.5rem;
     }
@@ -261,22 +246,23 @@ button {
     h1 {
         padding: 0rem;
         margin: 0rem;
-        margin-top: 0.5rem;
+        margin-top: 1rem;
         font-size: 5rem;
         height: 12%;
     }
 
     #board {
         display: flex;
-        flex-wrap: wrap; 
-        justify-content: center;
-        margin: 0rem;
-        padding: 0rem;
-    }
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-content: center;
+        min-width: 36vmax;
+        min-width: 36vm;        
+    }  
 
     .card {
-        display: flex;
-        flex-wrap: wrap;
+    /*    display: flex;
+        flex-wrap: wrap; */
         height: 8.7rem;
         width: 5.7rem;
         }
@@ -313,12 +299,23 @@ button {
         width: 100%;
         padding: 0.5rem;
     }
+
+    body {
+        margin: 0rem 10rem 10rem 0rem;
+    }
+
+    .cardBack img {
+        max-width: 90px;
+    }
+    
+    .card img {
+        max-width: 90px;
     }
 
     .card {
-        display: flex;
-        flex-wrap: wrap;
-        height: 8.7rem;
-        width: 5.7rem;
+    /*    display: flex;
+        flex-wrap: wrap;  */
+        height: 10.7rem;
+        width: 6.7rem;
         }
-}
+} 
